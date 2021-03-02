@@ -11,6 +11,7 @@
     "@fontsource/arvo": "^4.2.1",
     "@iconify-icons/gg": "^1.1.0",
     "@iconify/react": "^1.1.4",
+    "classnames": "^2.2.6",
     "next": "10.0.7",
     "react": "17.0.1",
     "react-dom": "17.0.1",
