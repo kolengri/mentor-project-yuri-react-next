@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Footer, Input, AutocompleteProps } from "../../components";
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 
 export type BaseLayoutProps = {
   children: React.ReactNode;
@@ -19,12 +19,15 @@ export type BaseLayoutProps = {
 
 const BaseLayoutMemo: React.FC<BaseLayoutProps> = (props) => {
   const { children } = props;
-  return <div>
-    <Input />
-    
-    {children}
-    <Footer />
-    </div>;
+
+  return (
+    <div>
+      <Input />
+
+      {children}
+      <Footer />
+    </div>
+  );
 };
 
 export const BaseLayout = React.memo(BaseLayoutMemo);

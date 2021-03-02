@@ -3,14 +3,16 @@ import { Icon, InlineIcon } from "@iconify/react";
 import searchIcon from "@iconify-icons/gg/search";
 
 import styles from "./styles.module.scss";
-import { Autocomplete } from "../../components";
+import { Autocomplete, AutocompleteListTemplate } from "../../components";
 
 export type InputProps = {};
 
 export const Input: React.FC<InputProps> = (props) => {
-  const [title, setTitle] = React.useState("");
-  const [checked, setChecked] = React.useState(true);
-  const radio = React.useRef(null);
+  const [filmName, setFilmName] = React.useState("");
+  const [template, setTemplate] = React.useState<AutocompleteListTemplate>(
+    "Poster"
+  );
+
   return (
     <div className={styles.container}>
       <div className={styles.container__input}>
@@ -18,16 +20,17 @@ export const Input: React.FC<InputProps> = (props) => {
         <input
           className={styles.query}
           placeholder="start typing..."
-          onChange={(event) => setTitle(event.target.value)}
+          onChange={(event) => setFilmName(event.target.value)}
+          value={filmName}
         />
         <div className={styles.radio}>
           <div>
             <label>
               List
               <input
+                checked={template === "List"}
                 type="radio"
-                ref={radio}
-                onChange={() => setChecked(!checked)}
+                onChange={() => setTemplate("List")}
                 name="type"
                 value="List"
               />
@@ -37,17 +40,16 @@ export const Input: React.FC<InputProps> = (props) => {
             <label>
               Posters
               <input
+                checked={template === "Poster"}
                 type="radio"
-                ref={radio}
-                defaultChecked={checked}
-                onChange={() => setChecked(!checked)}
+                onChange={() => setTemplate("Poster")}
                 name="type"
                 value="Posters"
               />
             </label>
           </div>
         </div>
-        <Autocomplete queryValue={title} />
+        <Autocomplete filmName={filmName} templateType={template} />
       </div>
     </div>
   );
