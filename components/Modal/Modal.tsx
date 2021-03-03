@@ -6,8 +6,12 @@ import styles from "./styles.module.scss";
 export type ModalProps = {};
 
 export const Modal: React.FC<ModalProps> = () => {
-  const [isClosed, setIsClosed] = React.useState(false);
-
+  const [isClosed, setIsClosed] = React.useState(true);
+  React.useEffect(()=>{
+    const modalTimeout = setTimeout(() => setIsClosed(false), 700);
+    return () => clearTimeout(modalTimeout)   
+  }, []);
+  
   return (
     <>
       <div className={classNames(styles.modal, { [styles.closed]: isClosed })}>

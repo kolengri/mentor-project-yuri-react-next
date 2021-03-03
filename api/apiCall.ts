@@ -16,6 +16,7 @@ type ApiCall = {
   ): Promise<Result>;
 };
 
+
 export const apiCall: ApiCall = async (endpointPart, method, req) => {
   const { body: rawBody, query: rawQuery } = req;
 
@@ -30,6 +31,9 @@ export const apiCall: ApiCall = async (endpointPart, method, req) => {
       addQueryPrefix: true,
     }
   );
+
+ 
+  
 
   const request = await fetch(`${API_ENDPOINT}${endpointPart}${query}`, {
     body,

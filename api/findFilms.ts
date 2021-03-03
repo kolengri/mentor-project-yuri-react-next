@@ -6,7 +6,7 @@ type Result = {
 };
 
 export const findFilm = (filmTitle: string) =>
-  apiCall<Result>("/", "GET", {
+  apiCall<Result>("", "GET", {
     query: {
       query: filmTitle,
     },
