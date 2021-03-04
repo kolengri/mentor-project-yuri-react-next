@@ -27,12 +27,6 @@ const makeFilmUrl = (id: number, title: string) => {
   return `${IMDB_URL}${id}-${cleanTitle}`;
 };
 
-// const wait = async (ms:number) => {
-//   return new Promise(resolve => {
-//     setTimeout(resolve, ms);
-// })
-// };
-
 const useFindFilm = (filmName: string) => {
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
@@ -41,7 +35,6 @@ const useFindFilm = (filmName: string) => {
   const fetchFilms = async () => {
     try {
       setLoading(true);
-      // await wait(5000);
       const result = await findFilm(filmName);
       setLoading(false);
       setItems(result.results);
@@ -54,7 +47,8 @@ const useFindFilm = (filmName: string) => {
 
   React.useEffect(() => {
     if (filmName !== "") {
-      fetchFilms();
+      const timeout = setTimeout(() => fetchFilms(), 700);
+      return () => clearTimeout(timeout);
     }
   }, [filmName]);
 
@@ -81,8 +75,12 @@ export const Autocomplete: React.FC<AutocompleteProps> = (props) => {
 
   return (
     <div className={styles.autocompleteStyling}>
-      <div className={styles.autocompleteItems}>
-        {items.map((film) => {
+      <div
+        className={classNames(styles.autocompleteItems, {
+          [styles.posters]: templateType === "Poster",
+        })}
+      >
+        {items.slice(0, 3).map((film) => {
           // () => {
           if (templateType === "List") {
             // items.map((film) => {
@@ -92,15 +90,16 @@ export const Autocomplete: React.FC<AutocompleteProps> = (props) => {
                 onClick={() => openUrl(makeFilmUrl(film.id, film.title))}
                 key={film.id}
               >
-                {film.title}
+                {`${film.title} (${film.vote_average.toFixed(1)})`}
               </div>
             );
             // });
           } else if (templateType === "Poster") {
             // items.slice(0, 2).map((film) => {
+
             return (
               <div
-                className={classNames(styles.filmDiv, styles.posters)}
+                className={classNames(styles.filmDiv, styles.postersDiv)}
                 onClick={() => openUrl(makeFilmUrl(film.id, film.title))}
                 key={film.id}
               >
@@ -109,11 +108,11 @@ export const Autocomplete: React.FC<AutocompleteProps> = (props) => {
                   src={
                     film.poster_path
                       ? `${IMAGE_PATH}${film.poster_path}`
-                      : `${NOT_FOUND_IMAGE_PATH}`
+                      : NOT_FOUND_IMAGE_PATH
                   }
                   alt="film_poster"
                 />
-                <h4 className={styles.filmTitle}>{`${film.title}${""}`}</h4>
+                <h4 className={styles.filmTitle}>{`${film.title} `}</h4>
                 <p className={styles.filmYear}>
                   {film.release_date
                     ? film.release_date.slice(0, 4)

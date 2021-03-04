@@ -76,6 +76,11 @@
   resolved "https://registry.yarnpkg.com/@iconify-icons/gg/-/gg-1.1.0.tgz#2a308c27fbb80fa0675b96fd1724963df1370aab"
   integrity sha512-vsM5NIoIj5u9Whm6WiAbYvRa8Qlv0RxLeK0xnYyW9cwa50P//7FbuxBkG2qB03V9vYMhQQJdrynlw4WBF7fToQ==
 
+"@iconify/icons-gg@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-gg/-/icons-gg-1.1.0.tgz#ae6451fa5573304357248d84e310acaaf0b90b6e"
+  integrity sha512-AQ+1vmX0EdxfWFL51HUjZk+1WSm68zzEm/+D4DF/b/BAC/Lc2RamLd6n4z8h9phdugOI6W3u7FWSz08CPbVktg==
+
 "@iconify/react@^1.1.4":
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/@iconify/react/-/react-1.1.4.tgz#c778eddbaf196e55705d0bedff00d039dc1de8d3"

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Icon, InlineIcon } from "@iconify/react";
-import searchIcon from "@iconify-icons/gg/search";
+import { Icon } from "@iconify/react";
+import searchIcon from "@iconify/icons-gg/search";
 
 import styles from "./styles.module.scss";
 import { Autocomplete, AutocompleteListTemplate } from "../../components";
@@ -16,7 +16,7 @@ export const Input: React.FC<InputProps> = (props) => {
   return (
     <div className={styles.container}>
       <div className={styles.container__input}>
-        {/* <Icon className={styles.iconify} icon={searchIcon} /> */}
+        <Icon className={styles.iconify} icon={searchIcon} />
         <input
           className={styles.query}
           placeholder="start typing..."
@@ -28,6 +28,7 @@ export const Input: React.FC<InputProps> = (props) => {
             <label>
               List
               <input
+                className={styles.radioInput}
                 checked={template === "List"}
                 type="radio"
                 onChange={() => setTemplate("List")}
@@ -40,6 +41,7 @@ export const Input: React.FC<InputProps> = (props) => {
             <label>
               Posters
               <input
+                className={styles.radioInput}
                 checked={template === "Poster"}
                 type="radio"
                 onChange={() => setTemplate("Poster")}

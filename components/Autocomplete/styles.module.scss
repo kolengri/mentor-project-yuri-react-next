@@ -13,6 +13,7 @@
 .autocompleteItems {
   text-align: left;
   overflow: auto;
+  font-family: "Roboto", sans-serif;
   font-size: 1.5rem;
   margin: 30px auto 0;
   max-height: 300px;
@@ -34,25 +35,29 @@
 }
 
 .posters {
-  display: flex;
   text-align: center;
   max-height: fit-content;
   max-width: fit-content;
   display: flex;
   justify-content: center;
-  padding: 15px;
-  margin: 0 20px;
+}
+
+.postersDiv {
+  margin: 0;
+  padding: 0 15px;
+  max-width: fit-content;
 }
 
 .filmTitle {
   margin: 15px auto 10px;
   font-size: 1.5rem;
+  font-weight: 400;
 }
 
 .filmYear {
   margin: 0;
   font-size: 1rem;
-  font-weight: 200;
+  font-weight: 300;
 }
 
 .filmPoster {
