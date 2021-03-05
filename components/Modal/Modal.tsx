@@ -1,17 +1,17 @@
 import * as React from "react";
 const classNames = require("classnames");
-import { openUrl } from "../../utils";
+import { externalURL } from "../../utils";
 import styles from "./styles.module.scss";
 
 export type ModalProps = {};
 
 export const Modal: React.FC<ModalProps> = () => {
   const [isClosed, setIsClosed] = React.useState(true);
-  React.useEffect(()=>{
+  React.useEffect(() => {
     const modalTimeout = setTimeout(() => setIsClosed(false), 700);
-    return () => clearTimeout(modalTimeout)   
+    return () => clearTimeout(modalTimeout);
   }, []);
-  
+
   return (
     <>
       <div className={classNames(styles.modal, { [styles.closed]: isClosed })}>
@@ -28,7 +28,7 @@ export const Modal: React.FC<ModalProps> = () => {
         <button onClick={() => setIsClosed(true)}>GOT IT</button>
         <button
           type="button"
-          onClick={() => openUrl("https://www.themoviedb.org/")}
+          onClick={() => externalURL("https://www.themoviedb.org/")}
         >
           Take me to TMDb
         </button>
