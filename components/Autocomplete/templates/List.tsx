@@ -12,15 +12,12 @@ export const List: React.FC<ListProps> = (props) => {
   const itemTitle = `${title} (${rating})`;
 
   return (
-    <>
-      <div
-        className={styles.filmDiv}
-        onClick={() => externalURL(makeFilmURL(id, title))}
-        key={id}
-      >
-        {itemTitle}
-      </div>
-      ;
-    </>
+    <div
+      className={styles.filmDiv}
+      onClick={() => externalURL(makeFilmURL(id, title))}
+      key={id}
+    >
+      {itemTitle}
+    </div>
   );
 };

@@ -1,5 +1,5 @@
 import * as React from "react";
-const classNames = require("classnames");
+import classNames from "classnames";
 import { externalURL } from "../../utils";
 import styles from "./styles.module.scss";
 

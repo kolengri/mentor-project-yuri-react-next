@@ -1,5 +1,5 @@
 import * as React from "react";
-const classNames = require("classnames");
+import classNames from "classnames";
 import styles from "./styles.module.scss";
 import { Film } from "../../models";
 import { findFilm } from "../../api/findFilms";
@@ -70,9 +70,9 @@ export const Autocomplete: React.FC<AutocompleteProps> = (props) => {
           [styles.posters]: templateType === "Poster",
         })}
       >
-        {films.map((film) => {
-          <Template {...film} key={film.id} />;
-        })}
+        {films.map((film) => (
+          <Template {...film} key={film.id} />
+        ))}
       </div>
     </div>
   );

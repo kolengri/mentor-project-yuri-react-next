@@ -20,30 +20,32 @@ export const Input: React.FC<InputProps> = (props) => {
     <div className={styles.container}>
       <div className={styles.container__input}>
         <Icon className={styles.iconify} icon={searchIcon} />
-        <input
-          className={styles.query}
-          placeholder="start typing..."
-          onChange={(event) => setFilmName(event.target.value)}
-          value={filmName}
-        />
-        <div className={styles.radio}>
-          {templateNames.map((templateName) => (
-            <div>
-              <label>
-                {templateName}
-                <input
-                  className={styles.radioInput}
-                  checked={template === templateName}
-                  type="radio"
-                  onChange={() =>
-                    setTemplate(templateName as AutocompleteListTemplate)
-                  }
-                  name="type"
-                  value={templateName}
-                />
-              </label>
-            </div>
-          ))}
+        <div className={styles.inputOuter}>
+          <input
+            className={styles.query}
+            placeholder="start typing..."
+            onChange={(event) => setFilmName(event.target.value)}
+            value={filmName}
+          />
+          <div className={styles.radio}>
+            {templateNames.map((templateName) => (
+              <div key={templateName}>
+                <label>
+                  {templateName}
+                  <input
+                    className={styles.radioInput}
+                    checked={template === templateName}
+                    type="radio"
+                    onChange={() =>
+                      setTemplate(templateName as AutocompleteListTemplate)
+                    }
+                    name="type"
+                    value={templateName}
+                  />
+                </label>
+              </div>
+            ))}
+          </div>
         </div>
         <Autocomplete filmName={filmName} templateType={template} />
       </div>
