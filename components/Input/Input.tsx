@@ -4,6 +4,9 @@ import searchIcon from "@iconify/icons-gg/search";
 
 import styles from "./styles.module.scss";
 import { Autocomplete, AutocompleteListTemplate } from "../../components";
+import * as templates from "../Autocomplete/templates";
+
+const templateNames = Object.keys(templates);
 
 export type InputProps = {};
 
@@ -24,32 +27,23 @@ export const Input: React.FC<InputProps> = (props) => {
           value={filmName}
         />
         <div className={styles.radio}>
-          <div>
-            <label>
-              List
-              <input
-                className={styles.radioInput}
-                checked={template === "List"}
-                type="radio"
-                onChange={() => setTemplate("List")}
-                name="type"
-                value="List"
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Posters
-              <input
-                className={styles.radioInput}
-                checked={template === "Poster"}
-                type="radio"
-                onChange={() => setTemplate("Poster")}
-                name="type"
-                value="Posters"
-              />
-            </label>
-          </div>
+          {templateNames.map((templateName) => (
+            <div>
+              <label>
+                {templateName}
+                <input
+                  className={styles.radioInput}
+                  checked={template === templateName}
+                  type="radio"
+                  onChange={() =>
+                    setTemplate(templateName as AutocompleteListTemplate)
+                  }
+                  name="type"
+                  value={templateName}
+                />
+              </label>
+            </div>
+          ))}
         </div>
         <Autocomplete filmName={filmName} templateType={template} />
       </div>
